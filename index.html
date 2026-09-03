@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>한국어 마스터 가이드 (Korean Learning Guide) | TOPIK 연계 로드맵</title>
+  <title>한국어 마스터 가이드 | Korean Learning & TOPIK Guide</title>
   
   <!-- Pretendard Web Font -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -15,32 +15,49 @@
        CSS Variables & Global Reset
        ========================================================================== */
     :root {
-      --bg-main: #F4F8F6; /* 연한 민트/아이보리 파스텔 톤 */
+      --bg-body: #F3F7F5;          /* 편안하고 산뜻한 파스텔 배경 */
+      --bg-section-alt: #EBF2EE;  /* 섹션 구분을 위한 보조 배경 */
       --bg-card: #FFFFFF;
-      --bg-subtle: #F9FBFB;
-      --primary: #2B7A78;
-      --primary-dark: #17252A;
-      --primary-light: #DEF2F1;
-      --accent: #FF7E67;
-      --accent-soft: #FFF1EE;
+      --bg-inner: #F8FAFC;
       
-      --text-main: #2D3748;
-      --text-muted: #64748B;
-      --text-light: #94A3B8;
-      --border-color: #E6ECE8;
+      --primary: #1F6E68;
+      --primary-dark: #123734;
+      --primary-light: #E1F0ED;
+      --primary-border: #BCDCD6;
       
-      --beginner-color: #38A169;
-      --beginner-bg: #EDFDF5;
-      --intermediate-color: #3182CE;
-      --intermediate-bg: #EBF8FF;
-      --advanced-color: #805AD5;
-      --advanced-bg: #FAF5FF;
-      --topik-color: #DD6B20;
-      --topik-bg: #FFFAF0;
+      --accent: #E05D44;
+      --accent-soft: #FDF0ED;
+      
+      /* Level Color Schemes */
+      --beginner-color: #15803D;
+      --beginner-light: #F0FDF4;
+      --beginner-border: #86EFAC;
+      
+      --intermediate-color: #1D4ED8;
+      --intermediate-light: #EFF6FF;
+      --intermediate-border: #93C5FD;
+      
+      --advanced-color: #6D28D9;
+      --advanced-light: #FAF5FF;
+      --advanced-border: #C4B5FD;
+      
+      --topik-color: #C2410C;
+      --topik-light: #FFF7ED;
+      --topik-border: #FDBA74;
 
-      --card-radius: 14px;
-      --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      --card-shadow-hover: 0 10px 24px rgba(0, 0, 0, 0.12);
+      --qa-color: #0F766E;
+      --qa-light: #F0FDFA;
+      --qa-border: #99F6E4;
+
+      --text-main: #1E293B;
+      --text-muted: #475569;
+      --text-light: #64748B;
+      --border-color: #DDE5E0;
+      --border-bold: #CBD5E1;
+
+      --card-radius: 16px;
+      --card-shadow: 0 4px 14px rgba(18, 55, 52, 0.08);
+      --card-shadow-hover: 0 12px 28px rgba(18, 55, 52, 0.14);
       --transition-smooth: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
@@ -51,10 +68,10 @@
     }
 
     body {
-      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
-      background-color: var(--bg-main);
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-color: var(--bg-body);
       color: var(--text-main);
-      line-height: 1.6;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
       word-break: keep-all;
     }
@@ -74,24 +91,62 @@
       padding: 0 24px;
     }
 
+    /* English Helper / Translation Badge & Text */
+    .en-sub {
+      display: block;
+      font-size: 0.84em;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-top: 2px;
+    }
+
+    .en-inline {
+      font-size: 0.88em;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-left: 4px;
+    }
+
+    .lang-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      background: #E2E8F0;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #334155;
+      vertical-align: middle;
+      text-transform: uppercase;
+    }
+
+    /* Section Boundary Divider */
+    .section-separator {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--border-bold) 50%, transparent 100%);
+      margin: 64px 0;
+    }
+
     /* ==========================================================================
-       Header & Visitor Counter Bar
+       Header
        ========================================================================== */
     header {
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--border-color);
       position: sticky;
       top: 0;
       z-index: 100;
-      transition: var(--transition-smooth);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
     }
 
     .header-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 72px;
+      height: 74px;
     }
 
     .logo-area {
@@ -101,17 +156,16 @@
     }
 
     .logo-badge {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--primary) 0%, #3AAFA9 100%);
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--primary) 0%, #2A8B84 100%);
       color: #fff;
-      border-radius: 10px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
-      font-weight: 700;
-      box-shadow: 0 2px 8px rgba(43, 122, 120, 0.3);
+      font-size: 1.35rem;
+      box-shadow: 0 4px 10px rgba(31, 110, 104, 0.3);
     }
 
     .logo-text h1 {
@@ -124,9 +178,8 @@
     .logo-text span {
       font-size: 0.78rem;
       color: var(--text-muted);
-      font-weight: 500;
+      font-weight: 600;
       display: block;
-      margin-top: -2px;
     }
 
     .header-right {
@@ -137,16 +190,26 @@
 
     .nav-links {
       display: flex;
-      gap: 18px;
+      gap: 12px;
     }
 
     .nav-links a {
-      font-size: 0.92rem;
-      font-weight: 600;
+      font-size: 0.9rem;
+      font-weight: 700;
       color: var(--text-muted);
-      padding: 6px 12px;
+      padding: 8px 14px;
       border-radius: 8px;
       transition: var(--transition-smooth);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      line-height: 1.2;
+    }
+
+    .nav-links a span.nav-en {
+      font-size: 0.68rem;
+      color: var(--text-light);
+      font-weight: 500;
     }
 
     .nav-links a:hover {
@@ -160,18 +223,18 @@
       align-items: center;
       gap: 8px;
       background: #FFFFFF;
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       padding: 6px 14px;
-      border-radius: 20px;
+      border-radius: 24px;
       font-size: 0.82rem;
       color: var(--text-main);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
       white-space: nowrap;
     }
 
     .visitor-counter .pulse-dot {
-      width: 8px;
-      height: 8px;
+      width: 9px;
+      height: 9px;
       background-color: #10B981;
       border-radius: 50%;
       box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
@@ -188,25 +251,25 @@
       font-weight: 800;
       color: var(--primary);
       font-feature-settings: "tnum";
-      letter-spacing: 0.02em;
+      letter-spacing: 0.03em;
     }
 
     /* ==========================================================================
        Hero Section
        ========================================================================== */
     .hero-section {
-      padding: 64px 0 44px;
+      padding: 60px 0 40px;
       text-align: center;
-      position: relative;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background-color: var(--primary-light);
-      color: var(--primary);
-      padding: 6px 16px;
+      border: 1px solid var(--primary-border);
+      color: var(--primary-dark);
+      padding: 6px 18px;
       border-radius: 24px;
       font-size: 0.86rem;
       font-weight: 700;
@@ -214,17 +277,17 @@
     }
 
     .hero-title {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       font-weight: 900;
       color: var(--primary-dark);
       letter-spacing: -0.03em;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       line-height: 1.25;
     }
 
     .hero-title .lang-sub {
       display: block;
-      font-size: 1.5rem;
+      font-size: 1.45rem;
       font-weight: 700;
       color: var(--primary);
       margin-top: 6px;
@@ -232,109 +295,129 @@
 
     .hero-subtitle {
       font-size: 1.15rem;
-      color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto 32px;
-      font-weight: 500;
+      color: var(--text-main);
+      max-width: 760px;
+      margin: 0 auto 8px;
+      font-weight: 600;
       line-height: 1.6;
     }
 
-    .quick-stats-bar {
-      display: flex;
-      justify-content: center;
-      gap: 32px;
-      max-width: 780px;
-      margin: 0 auto;
-      background: var(--bg-card);
-      border-radius: var(--card-radius);
-      box-shadow: var(--card-shadow);
-      padding: 18px 24px;
-      border: 1px solid var(--border-color);
-    }
-
-    .stat-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-align: left;
-    }
-
-    .stat-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-
-    .stat-item:nth-child(1) .stat-icon { background: var(--beginner-bg); color: var(--beginner-color); }
-    .stat-item:nth-child(2) .stat-icon { background: var(--intermediate-bg); color: var(--intermediate-color); }
-    .stat-item:nth-child(3) .stat-icon { background: var(--advanced-bg); color: var(--advanced-color); }
-
-    .stat-info .stat-label {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-    .stat-info .stat-val {
+    .hero-subtitle-en {
       font-size: 0.96rem;
-      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    /* Beginner Quick Vocabulary Pill Strip */
+    .vocab-quickbar {
+      background: #FFFFFF;
+      border: 2px solid var(--border-color);
+      border-radius: 12px;
+      max-width: 960px;
+      margin: 0 auto 40px;
+      padding: 16px 20px;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .vocab-bar-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .vocab-pills {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .vocab-card {
+      background: var(--bg-inner);
+      border: 1px solid var(--border-color);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .vocab-card strong {
       color: var(--primary-dark);
     }
 
-    /* ==========================================================================
-       Curriculum Section (3-Column Layout)
-       ========================================================================== */
-    .section-header {
+    .vocab-card span {
+      color: var(--text-muted);
+      font-size: 0.76rem;
+    }
+
+    /* Section Header Styles */
+    .section-header-box {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
+      position: relative;
     }
 
-    .section-tag {
-      font-size: 0.85rem;
-      font-weight: 700;
+    .section-pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.82rem;
+      font-weight: 800;
       color: var(--primary);
+      background: var(--primary-light);
+      border: 1px solid var(--primary-border);
+      padding: 4px 14px;
+      border-radius: 20px;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 8px;
-      display: block;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
     }
 
-    .section-title {
-      font-size: 1.95rem;
+    .section-title-large {
+      font-size: 2rem;
       font-weight: 800;
       color: var(--primary-dark);
       letter-spacing: -0.02em;
     }
 
-    .section-desc {
-      font-size: 1rem;
+    .section-desc-bilingual {
+      font-size: 0.98rem;
       color: var(--text-muted);
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     /* Filter / Tab Bar */
     .tab-filter-wrap {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       margin-bottom: 36px;
+      flex-wrap: wrap;
     }
 
     .filter-btn {
       background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-size: 0.88rem;
+      border: 2px solid var(--border-color);
+      padding: 8px 20px;
+      border-radius: 24px;
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--text-muted);
       cursor: pointer;
       transition: var(--transition-smooth);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .filter-btn:hover,
@@ -342,24 +425,24 @@
       background: var(--primary);
       color: #FFFFFF;
       border-color: var(--primary);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(43, 122, 120, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(31, 110, 104, 0.25);
     }
 
-    /* 3-Column Card Grid */
+    /* ==========================================================================
+       Curriculum Cards (3-Column Layout with Distinct Borders & Images)
+       ========================================================================== */
     .curriculum-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-bottom: 72px;
+      gap: 32px;
     }
 
-    /* Course Card (Card-shadow + 12px radius) */
     .course-card {
       background: var(--bg-card);
       border-radius: var(--card-radius);
       box-shadow: var(--card-shadow);
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--border-color);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -367,18 +450,30 @@
       position: relative;
     }
 
+    /* Distinct level borders on hover and active identity */
+    .course-card[data-category="beginner"] {
+      border-top: 6px solid var(--beginner-color);
+    }
+    .course-card[data-category="intermediate"] {
+      border-top: 6px solid var(--intermediate-color);
+    }
+    .course-card[data-category="advanced"] {
+      border-top: 6px solid var(--advanced-color);
+    }
+
     .course-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
       box-shadow: var(--card-shadow-hover);
     }
 
-    /* Card Image Box */
+    /* Distinctive Image Container with framing border */
     .card-img-wrapper {
       position: relative;
       width: 100%;
-      height: 200px;
+      height: 210px;
       overflow: hidden;
       background: #E2E8F0;
+      border-bottom: 2px solid var(--border-color);
     }
 
     .card-img-wrapper img {
@@ -389,38 +484,52 @@
     }
 
     .course-card:hover .card-img-wrapper img {
-      transform: scale(1.05);
+      transform: scale(1.06);
     }
 
     .level-badge {
       position: absolute;
       top: 14px;
       left: 14px;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.78rem;
       font-weight: 800;
       letter-spacing: 0.02em;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       text-transform: uppercase;
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
     }
 
     .badge-beginner {
       background: var(--beginner-color);
       color: #fff;
     }
-
     .badge-intermediate {
       background: var(--intermediate-color);
       color: #fff;
     }
-
     .badge-advanced {
       background: var(--advanced-color);
       color: #fff;
+    }
+
+    .img-caption-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(0deg, rgba(15, 23, 42, 0.85) 0%, transparent 100%);
+      padding: 24px 14px 8px;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
     }
 
     /* Card Content Area */
@@ -434,15 +543,17 @@
     .card-header-area {
       margin-bottom: 20px;
       padding-bottom: 16px;
-      border-bottom: 1px dashed var(--border-color);
+      border-bottom: 2px dashed var(--border-color);
     }
 
-    .card-phase {
-      font-size: 0.82rem;
-      font-weight: 700;
+    .card-phase-tag {
+      font-size: 0.8rem;
+      font-weight: 800;
       color: var(--text-muted);
-      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
       display: block;
+      margin-bottom: 4px;
     }
 
     .card-title {
@@ -453,96 +564,102 @@
     }
 
     .card-subtitle {
-      font-size: 0.95rem;
-      color: var(--primary);
-      font-weight: 600;
+      font-size: 0.92rem;
+      font-weight: 700;
       margin-top: 4px;
     }
 
-    /* Concise Bullet Content Section */
-    .content-block {
-      margin-bottom: 18px;
-    }
+    .sub-beginner { color: var(--beginner-color); }
+    .sub-intermediate { color: var(--intermediate-color); }
+    .sub-advanced { color: var(--advanced-color); }
 
-    .content-block:last-child {
-      margin-bottom: 0;
+    /* Content Blocks */
+    .content-block {
+      margin-bottom: 20px;
+      background: var(--bg-inner);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px 16px;
     }
 
     .block-heading {
       font-size: 0.84rem;
       font-weight: 800;
-      color: var(--text-muted);
+      color: var(--text-main);
       text-transform: uppercase;
       letter-spacing: 0.03em;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .block-heading-title {
       display: flex;
       align-items: center;
       gap: 6px;
     }
 
-    .block-heading i {
-      font-size: 0.85rem;
-    }
-
-    .beginner-icon { color: var(--beginner-color); }
-    .intermediate-icon { color: var(--intermediate-color); }
-    .advanced-icon { color: var(--advanced-color); }
-
-    /* Bullet List Design */
-    .bullet-list {
-      padding-left: 0;
-    }
-
     .bullet-list li {
       position: relative;
-      padding-left: 18px;
-      font-size: 0.92rem;
+      padding-left: 20px;
+      font-size: 0.9rem;
       color: var(--text-main);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       line-height: 1.5;
+    }
+
+    .bullet-list li:last-child {
+      margin-bottom: 0;
     }
 
     .bullet-list li::before {
       content: "•";
       position: absolute;
       left: 4px;
-      top: 0;
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: var(--primary);
+      top: -1px;
+      font-size: 1.2rem;
+      font-weight: 900;
     }
 
-    /* Info Pill Box (Books & Sites) */
+    .beginner-list li::before { color: var(--beginner-color); }
+    .intermediate-list li::before { color: var(--intermediate-color); }
+    .advanced-list li::before { color: var(--advanced-color); }
+
+    /* Recommended Books & Sites Pill */
     .info-box-group {
       margin-top: auto;
-      padding-top: 18px;
-      border-top: 1px solid var(--border-color);
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
 
     .info-pill {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
       border-radius: 8px;
       padding: 10px 14px;
       font-size: 0.86rem;
+      transition: var(--transition-smooth);
+    }
+
+    .info-pill:hover {
+      border-color: var(--primary);
     }
 
     .info-pill-title {
-      font-size: 0.75rem;
+      font-size: 0.74rem;
       font-weight: 800;
       color: var(--text-muted);
       margin-bottom: 4px;
       text-transform: uppercase;
       display: flex;
       align-items: center;
-      gap: 5px;
+      justify-content: space-between;
     }
 
     .info-pill-content {
-      font-weight: 600;
+      font-weight: 700;
       color: var(--primary-dark);
       line-height: 1.4;
     }
@@ -555,7 +672,6 @@
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      transition: var(--transition-smooth);
     }
 
     .info-pill a:hover {
@@ -563,15 +679,16 @@
     }
 
     /* ==========================================================================
-       TOPIK Section (Final Goal)
+       TOPIK Section (Clear Frame & Visual Separation)
        ========================================================================== */
-    .topik-section {
-      background: var(--bg-card);
+    .topik-container-outer {
+      background: #FFFFFF;
       border-radius: var(--card-radius);
       box-shadow: var(--card-shadow);
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--topik-border);
+      border-top: 8px solid var(--topik-color);
       overflow: hidden;
-      margin-bottom: 72px;
+      position: relative;
     }
 
     .topik-banner {
@@ -582,8 +699,9 @@
 
     .topik-image-wrap {
       position: relative;
-      min-height: 380px;
-      background: #E2E8F0;
+      min-height: 420px;
+      background: #CBD5E1;
+      border-right: 2px solid var(--border-color);
     }
 
     .topik-image-wrap img {
@@ -595,11 +713,11 @@
     .topik-img-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(23, 37, 42, 0.1) 0%, rgba(23, 37, 42, 0.6) 100%);
+      background: linear-gradient(180deg, rgba(18, 55, 52, 0.1) 0%, rgba(18, 55, 52, 0.8) 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 28px;
+      padding: 32px;
       color: #FFFFFF;
     }
 
@@ -607,21 +725,15 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--accent);
+      background: var(--topik-color);
       color: #fff;
       font-size: 0.8rem;
       font-weight: 800;
       padding: 4px 12px;
       border-radius: 6px;
       width: fit-content;
-      margin-bottom: 10px;
-      letter-spacing: 0.05em;
-    }
-
-    .topik-img-overlay h3 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      line-height: 1.3;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     }
 
     .topik-content {
@@ -629,46 +741,46 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      background: var(--topik-light);
     }
 
     .topik-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: var(--topik-bg);
+      background: #FFFFFF;
       color: var(--topik-color);
-      padding: 4px 12px;
-      border-radius: 16px;
+      padding: 4px 14px;
+      border-radius: 20px;
       font-size: 0.82rem;
       font-weight: 800;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       width: fit-content;
-      border: 1px solid rgba(221, 107, 32, 0.2);
+      border: 1px solid var(--topik-border);
     }
 
     .topik-title {
-      font-size: 1.85rem;
+      font-size: 1.95rem;
       font-weight: 900;
       color: var(--primary-dark);
-      margin-bottom: 14px;
       letter-spacing: -0.02em;
     }
 
     .topik-desc {
       font-size: 0.98rem;
-      color: var(--text-muted);
-      margin-bottom: 24px;
+      color: var(--text-main);
+      margin: 10px 0 20px;
       line-height: 1.6;
     }
 
     .topik-bullets {
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .topik-bullets li {
       position: relative;
       padding-left: 24px;
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       color: var(--text-main);
       margin-bottom: 12px;
       line-height: 1.55;
@@ -681,9 +793,9 @@
       top: 0;
       font-weight: 900;
       color: var(--topik-color);
+      font-size: 1.1rem;
     }
 
-    /* TOPIK Level Grid Highlight */
     .topik-level-cards {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -692,10 +804,11 @@
     }
 
     .level-box {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 14px;
+      background: #FFFFFF;
+      border: 1.5px solid var(--topik-border);
+      border-radius: 12px;
+      padding: 16px;
+      box-shadow: 0 2px 6px rgba(194, 65, 12, 0.06);
     }
 
     .level-box-header {
@@ -706,7 +819,7 @@
     }
 
     .level-box-title {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       font-weight: 800;
       color: var(--primary-dark);
     }
@@ -716,21 +829,20 @@
       font-weight: 700;
       padding: 2px 8px;
       border-radius: 12px;
-      background: #FFFFFF;
-      border: 1px solid var(--border-color);
-      color: var(--text-muted);
+      background: var(--topik-light);
+      border: 1px solid var(--topik-border);
+      color: var(--topik-color);
     }
 
     .level-box p {
-      font-size: 0.84rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
       line-height: 1.45;
     }
 
-    /* External Resource Link Box */
     .topik-links-grid {
       display: flex;
-      gap: 12px;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
@@ -738,118 +850,287 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 700;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 800;
       transition: var(--transition-smooth);
     }
 
     .topik-btn-primary {
-      background: var(--primary);
+      background: var(--topik-color);
       color: #FFFFFF;
-      box-shadow: 0 4px 10px rgba(43, 122, 120, 0.2);
+      box-shadow: 0 4px 12px rgba(194, 65, 12, 0.25);
     }
 
     .topik-btn-primary:hover {
-      background: var(--primary-dark);
+      background: #9A3412;
       transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(23, 37, 42, 0.25);
+      box-shadow: 0 6px 16px rgba(154, 52, 18, 0.35);
     }
 
     .topik-btn-secondary {
       background: #FFFFFF;
-      border: 1px solid var(--border-color);
+      border: 2px solid var(--topik-border);
       color: var(--text-main);
     }
 
     .topik-btn-secondary:hover {
-      background: var(--primary-light);
-      border-color: var(--primary);
-      color: var(--primary);
+      background: var(--topik-light);
+      border-color: var(--topik-color);
+      color: var(--topik-color);
       transform: translateY(-2px);
     }
 
     /* ==========================================================================
-       Learning Tips & Action Banner
+       Q&A & Community FAQ Section (요청 기능: 질문과 답변 섹션)
        ========================================================================== */
-    .roadmap-timeline {
-      background: var(--bg-card);
+    .qa-section-wrapper {
+      background: #FFFFFF;
+      border: 2px solid var(--qa-border);
+      border-top: 8px solid var(--qa-color);
       border-radius: var(--card-radius);
       box-shadow: var(--card-shadow);
-      border: 1px solid var(--border-color);
-      padding: 36px;
-      margin-bottom: 72px;
-      text-align: center;
+      padding: 44px;
+      margin-bottom: 60px;
     }
 
-    .roadmap-steps {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
+    .qa-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
       margin-top: 32px;
-      padding: 0 20px;
     }
 
-    .roadmap-steps::before {
-      content: "";
-      position: absolute;
-      top: 30px;
-      left: 60px;
-      right: 60px;
-      height: 3px;
-      background: #E2E8F0;
-      z-index: 1;
-    }
-
-    .roadmap-node {
-      position: relative;
-      z-index: 2;
+    /* FAQ Accordion List */
+    .faq-list {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      max-width: 180px;
+      gap: 14px;
     }
 
-    .node-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #FFFFFF;
-      border: 3px solid var(--border-color);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    .faq-item {
+      background: var(--bg-inner);
+      border: 1.5px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
       transition: var(--transition-smooth);
     }
 
-    .roadmap-node:hover .node-icon {
-      transform: scale(1.1);
-      border-color: var(--primary);
-      color: var(--primary);
+    .faq-item.open {
+      border-color: var(--qa-color);
+      background: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(15, 118, 110, 0.08);
     }
 
-    .node-active .node-icon {
-      border-color: var(--primary);
-      background: var(--primary);
-      color: #FFFFFF;
-    }
-
-    .node-title {
+    .faq-question {
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
       font-size: 0.95rem;
       font-weight: 800;
       color: var(--primary-dark);
+      user-select: none;
+    }
+
+    .faq-question .q-icon {
+      width: 24px;
+      height: 24px;
+      background: var(--qa-light);
+      color: var(--qa-color);
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      margin-right: 10px;
+      flex-shrink: 0;
+    }
+
+    .faq-question i.chevron {
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
+      font-size: 0.85rem;
+    }
+
+    .faq-item.open .faq-question i.chevron {
+      transform: rotate(180deg);
+      color: var(--qa-color);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 18px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-top: 1px dashed var(--border-color);
+      margin-top: 6px;
+      padding-top: 12px;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* Question Submission Form */
+    .qa-form-box {
+      background: var(--qa-light);
+      border: 2px dashed var(--qa-border);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .qa-form-header {
+      margin-bottom: 20px;
+    }
+
+    .qa-form-header h4 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--qa-color);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qa-form-header p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .qa-form-group {
+      margin-bottom: 14px;
+    }
+
+    .qa-form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .qa-input, .qa-select, .qa-textarea {
+      width: 100%;
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      color: var(--text-main);
+      transition: var(--transition-smooth);
+    }
+
+    .qa-input:focus, .qa-select:focus, .qa-textarea:focus {
+      outline: none;
+      border-color: var(--qa-color);
+      box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+    }
+
+    .qa-textarea {
+      resize: vertical;
+      min-height: 85px;
+    }
+
+    .qa-submit-btn {
+      background: var(--qa-color);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition-smooth);
+      box-shadow: 0 4px 10px rgba(15, 118, 110, 0.2);
+    }
+
+    .qa-submit-btn:hover {
+      background: #115E59;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(17, 94, 89, 0.3);
+    }
+
+    /* Live Questions Feed Preview */
+    .qa-recent-feed {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--qa-border);
+    }
+
+    .qa-feed-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .qa-feed-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+    }
+
+    .qa-feed-item .feed-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-light);
+      font-size: 0.74rem;
       margin-bottom: 4px;
     }
 
-    .node-sub {
-      font-size: 0.78rem;
+    .qa-feed-item .feed-q {
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .qa-feed-item .feed-a {
       color: var(--text-muted);
+      font-size: 0.8rem;
+      margin-top: 4px;
+      padding-left: 8px;
+      border-left: 2px solid var(--qa-color);
+    }
+
+    /* Toast Notification */
+    .toast-box {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--primary-dark);
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      font-size: 0.88rem;
+      font-weight: 700;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     /* ==========================================================================
@@ -857,7 +1138,7 @@
        ========================================================================== */
     footer {
       background: #FFFFFF;
-      border-top: 1px solid var(--border-color);
+      border-top: 2px solid var(--border-color);
       padding: 48px 0 32px;
       color: var(--text-muted);
       font-size: 0.88rem;
@@ -872,20 +1153,20 @@
     }
 
     .footer-brand h4 {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--primary-dark);
       margin-bottom: 8px;
     }
 
     .footer-brand p {
-      max-width: 420px;
-      line-height: 1.55;
+      max-width: 440px;
+      line-height: 1.6;
     }
 
     .footer-links {
       display: flex;
-      gap: 36px;
+      gap: 40px;
     }
 
     .link-col h5 {
@@ -927,7 +1208,12 @@
         grid-template-columns: 1fr;
       }
       .topik-image-wrap {
-        min-height: 260px;
+        min-height: 280px;
+        border-right: none;
+        border-bottom: 2px solid var(--border-color);
+      }
+      .qa-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -943,7 +1229,7 @@
         justify-content: space-between;
       }
       .nav-links {
-        display: none; /* Hide on compact mobile, simplify view */
+        display: none;
       }
       .hero-title {
         font-size: 2rem;
@@ -951,9 +1237,9 @@
       .hero-title .lang-sub {
         font-size: 1.25rem;
       }
-      .quick-stats-bar {
+      .vocab-quickbar {
         flex-direction: column;
-        gap: 16px;
+        align-items: flex-start;
       }
       .curriculum-grid {
         grid-template-columns: 1fr;
@@ -967,19 +1253,15 @@
       .topik-level-cards {
         grid-template-columns: 1fr;
       }
-      .roadmap-steps {
-        flex-direction: column;
-        gap: 24px;
-      }
-      .roadmap-steps::before {
-        display: none;
+      .qa-section-wrapper {
+        padding: 24px;
       }
       .footer-content {
         flex-direction: column;
       }
       .footer-bottom {
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
         text-align: center;
       }
     }
@@ -988,7 +1270,7 @@
 <body>
 
   <!-- ==========================================================================
-       Header & Top Navigation
+       Header & Top Bar
        ========================================================================== -->
   <header>
     <div class="container header-nav">
@@ -998,19 +1280,28 @@
         </div>
         <div class="logo-text">
           <h1>한국어 마스터 가이드</h1>
-          <span>Korean Learning Guide</span>
+          <span>Korean Learning Guide · 한국어 로드맵</span>
         </div>
       </div>
 
       <div class="header-right">
         <nav class="nav-links">
-          <a href="#curriculum"><i class="fa-solid fa-route"></i> 단계별 로드맵</a>
-          <a href="#topik"><i class="fa-solid fa-award"></i> TOPIK 시험 대비</a>
-          <a href="#roadmap"><i class="fa-solid fa-compass"></i> 학습 타임라인</a>
+          <a href="#curriculum">
+            <span>단계별 로드맵</span>
+            <span class="nav-en">Levels 1~3</span>
+          </a>
+          <a href="#topik">
+            <span>TOPIK 시험 대비</span>
+            <span class="nav-en">Exam Prep</span>
+          </a>
+          <a href="#qa-section">
+            <span>Q&A 질문/답변</span>
+            <span class="nav-en">Ask & FAQ</span>
+          </a>
         </nav>
 
-        <!-- [방문자 카운터] 요구사항: 작고 깔끔한 디자인으로 방문자 수 표시 -->
-        <div class="visitor-counter" title="누적 학습자 방문 수">
+        <!-- [방문자 카운터] 실시간 카운트업 & 로컬스토리지 유지 -->
+        <div class="visitor-counter" title="누적 학습자 방문 수 (Total Visitor Count)">
           <span class="pulse-dot"></span>
           <span>Total Visitors:</span>
           <span class="counter-number" id="visitorCount">12,485</span>
@@ -1025,10 +1316,10 @@
   <section class="hero-section">
     <div class="container">
       <div class="hero-badge">
-        <i class="fa-solid fa-sparkles"></i> 2026 맞춤형 외국인 한국어 교육 로드맵
+        <i class="fa-solid fa-earth-asia"></i> 외국인 학습자를 위한 친절한 한국어 가이드 (For Global Korean Learners)
       </div>
       
-      <!-- [메인 타이틀] & [서브 타이틀] 요구사항 -->
+      <!-- [메인 타이틀] & [서브 타이틀] -->
       <h1 class="hero-title">
         한국어 마스터 가이드
         <span class="lang-sub">Korean Learning Guide</span>
@@ -1036,28 +1327,36 @@
       <p class="hero-subtitle">
         기초 발음부터 TOPIK 합격까지, 가장 완벽한 한국어 학습 로드맵
       </p>
+      <p class="hero-subtitle-en">
+        From Hangul pronunciation to passing the TOPIK exam — the most structured Korean roadmap for foreign learners.
+      </p>
 
-      <!-- 요약 바 -->
-      <div class="quick-stats-bar">
-        <div class="stat-item">
-          <div class="stat-icon"><i class="fa-solid fa-seedling"></i></div>
-          <div class="stat-info">
-            <div class="stat-label">Beginner Phase</div>
-            <div class="stat-val">초급 (발음 & 생존회화)</div>
-          </div>
+      <!-- 초급 외국인 학습자를 위한 필수 영문/한글 기초 어휘 미니 바 -->
+      <div class="vocab-quickbar">
+        <div class="vocab-bar-title">
+          <i class="fa-solid fa-book-bookmark"></i>
+          <span>초급 필수 한국어 단어 <span class="lang-pill">Basic Vocab</span></span>
         </div>
-        <div class="stat-item">
-          <div class="stat-icon"><i class="fa-solid fa-comments"></i></div>
-          <div class="stat-info">
-            <div class="stat-label">Intermediate Phase</div>
-            <div class="stat-val">중급 (실생활 필수회화)</div>
+        <div class="vocab-pills">
+          <div class="vocab-card">
+            <strong>안녕하세요</strong>
+            <span>[An-nyeong-ha-se-yo] Hello</span>
           </div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-icon"><i class="fa-solid fa-landmark"></i></div>
-          <div class="stat-info">
-            <div class="stat-label">Advanced & TOPIK</div>
-            <div class="stat-val">고급 (시사/역사 & 급수 취득)</div>
+          <div class="vocab-card">
+            <strong>감사합니다</strong>
+            <span>[Gam-sa-ham-ni-da] Thank you</span>
+          </div>
+          <div class="vocab-card">
+            <strong>자음 / 모음</strong>
+            <span>[Consonant / Vowel]</span>
+          </div>
+          <div class="vocab-card">
+            <strong>받침</strong>
+            <span>[Bat-chim] Final Consonant</span>
+          </div>
+          <div class="vocab-card">
+            <strong>존댓말 / 반말</strong>
+            <span>[Formal / Informal]</span>
           </div>
         </div>
       </div>
@@ -1065,22 +1364,35 @@
   </section>
 
   <!-- ==========================================================================
-       단계별 학습 과정 섹션 (3단 레이아웃)
+       2. 단계별 학습 과정 섹션 (3단 레이아웃 & 도드라진 카드 구분)
        ========================================================================== -->
   <section class="curriculum-section" id="curriculum">
     <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Step-by-Step Curriculum</span>
-        <h2 class="section-title">단계별 한국어 학습 로드맵</h2>
-        <p class="section-desc">학습자의 수준과 목표에 맞춘 체계적인 3단계 커리큘럼입니다.</p>
+      <div class="section-header-box">
+        <span class="section-pill-tag">
+          <i class="fa-solid fa-layer-group"></i> Step-by-Step Curriculum
+        </span>
+        <h2 class="section-title-large">단계별 한국어 학습 과정</h2>
+        <p class="section-desc-bilingual">
+          각 레벨별 핵심 학습 목표, 방법, 추천 교재 및 공식 사이트 안내
+          <span class="en-sub">Core objectives, study techniques, recommended textbooks and websites for each level</span>
+        </p>
       </div>
 
       <!-- 탭 필터 (전체/초급/중급/고급) -->
       <div class="tab-filter-wrap">
-        <button class="filter-btn active" onclick="filterLevel('all', this)"><i class="fa-solid fa-list-check"></i> 전체 과정 보기</button>
-        <button class="filter-btn" onclick="filterLevel('beginner', this)"><i class="fa-solid fa-seedling"></i> 초급 과정</button>
-        <button class="filter-btn" onclick="filterLevel('intermediate', this)"><i class="fa-solid fa-comments"></i> 중급 과정</button>
-        <button class="filter-btn" onclick="filterLevel('advanced', this)"><i class="fa-solid fa-landmark"></i> 고급 과정</button>
+        <button class="filter-btn active" onclick="filterLevel('all', this)">
+          <i class="fa-solid fa-list-check"></i> 전체 과정 보기 <span class="en-inline">(All Levels)</span>
+        </button>
+        <button class="filter-btn" onclick="filterLevel('beginner', this)">
+          <i class="fa-solid fa-seedling" style="color: var(--beginner-color);"></i> ① 초급 과정 <span class="en-inline">(Beginner)</span>
+        </button>
+        <button class="filter-btn" onclick="filterLevel('intermediate', this)">
+          <i class="fa-solid fa-comments" style="color: var(--intermediate-color);"></i> ② 중급 과정 <span class="en-inline">(Intermediate)</span>
+        </button>
+        <button class="filter-btn" onclick="filterLevel('advanced', this)">
+          <i class="fa-solid fa-landmark" style="color: var(--advanced-color);"></i> ③ 고급 과정 <span class="en-inline">(Advanced)</span>
+        </button>
       </div>
 
       <div class="curriculum-grid">
@@ -1088,62 +1400,96 @@
              ① 초급 과정 (Beginner)
              ========================================== -->
         <article class="course-card" data-category="beginner">
+          <!-- 도드라진 이미지 영역 -->
           <div class="card-img-wrapper">
             <img 
               src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80" 
-              alt="밝은 분위기의 한국어 교실 및 자모음 학습" 
+              alt="밝은 분위기의 한국어 교실 및 자모음 학습 (Hangul Alphabet & Classroom)" 
               loading="lazy"
               onerror="this.src='https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=800&q=80'"
             />
             <span class="level-badge badge-beginner">
-              <i class="fa-solid fa-feather"></i> Step 1 · 초급
+              <i class="fa-solid fa-feather"></i> Step 1 · 초급 (Beginner)
             </span>
+            <div class="img-caption-strip">
+              <span><i class="fa-solid fa-camera"></i> 한글 자모음표 및 밝은 교실</span>
+              <span class="lang-pill">자모음 기초</span>
+            </div>
           </div>
 
           <div class="card-body">
             <div class="card-header-area">
-              <span class="card-phase">초급 과정 (Beginner)</span>
+              <span class="card-phase-tag">Course Phase 01</span>
               <h3 class="card-title">기초 발음과 첫걸음</h3>
-              <p class="card-subtitle">자모음 구조와 생존 한국어 표현 마스터</p>
+              <p class="card-subtitle sub-beginner">
+                Hangul Basics & First Steps <span class="en-inline">· 자모음과 생존 표현</span>
+              </p>
             </div>
 
-            <!-- 학습 내용 -->
+            <!-- [학습 내용] -->
             <div class="content-block">
               <div class="block-heading">
-                <i class="fa-solid fa-book-open beginner-icon"></i>
-                <span>학습 내용</span>
+                <span class="block-heading-title">
+                  <i class="fa-solid fa-book-open" style="color: var(--beginner-color);"></i>
+                  <span>학습 내용</span>
+                </span>
+                <span class="lang-pill">What You Learn</span>
               </div>
-              <ul class="bullet-list">
-                <li>자음과 모음의 정확한 발음 기호 및 구강 구조 익히기</li>
-                <li>기본 인사말, 숫자, 쇼핑, 길찾기 등 생존 표현 습득</li>
-                <li>받침 규칙 및 연음 법칙의 기본 원리 체득</li>
+              <ul class="bullet-list beginner-list">
+                <li>
+                  <strong>자음과 모음의 정확한 발음 기호 및 구강 구조 익히기</strong>
+                  <span class="en-sub">Mastering accurate pronunciation, mouth shapes, and Hangul consonant/vowel structure</span>
+                </li>
+                <li>
+                  <strong>기본 인사말, 숫자, 쇼핑, 길찾기 등 생존 표현 습득</strong>
+                  <span class="en-sub">Essential survival phrases: greetings, counting numbers, ordering, and asking directions</span>
+                </li>
+                <li>
+                  <strong>받침(종성) 및 기초 음운 규칙 이해</strong>
+                  <span class="en-sub">Understanding final consonants (Bat-chim) and basic syllable blocks</span>
+                </li>
               </ul>
             </div>
 
-            <!-- 학습 방법 -->
+            <!-- [학습 방법] -->
             <div class="content-block">
               <div class="block-heading">
-                <i class="fa-solid fa-microphone-lines beginner-icon"></i>
-                <span>학습 방법</span>
+                <span class="block-heading-title">
+                  <i class="fa-solid fa-microphone-lines" style="color: var(--beginner-color);"></i>
+                  <span>학습 방법</span>
+                </span>
+                <span class="lang-pill">Study Method</span>
               </div>
-              <ul class="bullet-list">
-                <li>섀도잉(Shadowing) 기법을 통한 반복 말하기 훈련</li>
-                <li>음성 녹음 후 원어민 오디오와 발음/억양 비교 청취</li>
+              <ul class="bullet-list beginner-list">
+                <li>
+                  <strong>섀도잉(Shadowing) 기법을 통한 반복 말하기 훈련</strong>
+                  <span class="en-sub">Shadowing technique: listening to native audio and repeating immediately to build muscle memory</span>
+                </li>
               </ul>
             </div>
 
-            <!-- 교재 및 추천 사이트 -->
+            <!-- [추천 교재 & 사이트] -->
             <div class="info-box-group">
               <div class="info-pill">
-                <div class="info-pill-title"><i class="fa-solid fa-book"></i> 추천 교재</div>
-                <div class="info-pill-content">연세대학교 한국어 1권, 서울대 한국어 초급</div>
+                <div class="info-pill-title">
+                  <span><i class="fa-solid fa-book"></i> 추천 교재</span>
+                  <span class="en-inline">Textbooks</span>
+                </div>
+                <div class="info-pill-content">
+                  연세대학교 한국어 1권, 서울대 한국어 초급
+                  <span class="en-sub">Yonsei Korean 1, SNU Korean Beginner</span>
+                </div>
               </div>
               <div class="info-pill">
-                <div class="info-pill-title"><i class="fa-solid fa-globe"></i> 추천 사이트</div>
+                <div class="info-pill-title">
+                  <span><i class="fa-solid fa-globe"></i> 추천 사이트</span>
+                  <span class="en-inline">Recommended Web</span>
+                </div>
                 <div class="info-pill-content">
                   <a href="https://talktomeinkorean.com" target="_blank" rel="noopener noreferrer">
-                    Talk To Me In Korean <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    Talk To Me In Korean (talktomeinkorean.com) <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
+                  <span class="en-sub">Free audio lessons and grammar curriculum for global learners</span>
                 </div>
               </div>
             </div>
@@ -1154,62 +1500,92 @@
              ② 중급 과정 (Intermediate)
              ========================================== -->
         <article class="course-card" data-category="intermediate">
+          <!-- 도드라진 이미지 영역 -->
           <div class="card-img-wrapper">
             <img 
               src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" 
-              alt="카페에서 대화하는 외국인 친구들과 일상 회화" 
+              alt="카페에서 대화하는 외국인 친구들과 서울 거리 (Everyday Conversation & Cafe Culture)" 
               loading="lazy"
               onerror="this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80'"
             />
             <span class="level-badge badge-intermediate">
-              <i class="fa-solid fa-comments"></i> Step 2 · 중급
+              <i class="fa-solid fa-comments"></i> Step 2 · 중급 (Intermediate)
             </span>
+            <div class="img-caption-strip">
+              <span><i class="fa-solid fa-camera"></i> 카페 대화 및 서울 일상 풍경</span>
+              <span class="lang-pill">실전 회화</span>
+            </div>
           </div>
 
           <div class="card-body">
             <div class="card-header-area">
-              <span class="card-phase">중급 과정 (Intermediate)</span>
+              <span class="card-phase-tag">Course Phase 02</span>
               <h3 class="card-title">일상 생활 대화</h3>
-              <p class="card-subtitle">실제 생활 상황별 회화 및 높임말 체계 정복</p>
+              <p class="card-subtitle sub-intermediate">
+                Everyday Life Conversation <span class="en-inline">· 상황별 소통 & 존댓말</span>
+              </p>
             </div>
 
-            <!-- 학습 내용 -->
+            <!-- [학습 내용] -->
             <div class="content-block">
               <div class="block-heading">
-                <i class="fa-solid fa-book-open intermediate-icon"></i>
-                <span>학습 내용</span>
+                <span class="block-heading-title">
+                  <i class="fa-solid fa-book-open" style="color: var(--intermediate-color);"></i>
+                  <span>학습 내용</span>
+                </span>
+                <span class="lang-pill">What You Learn</span>
               </div>
-              <ul class="bullet-list">
-                <li>대중교통 이용, 병원 진료, 은행 업무 등 실생활 필수 회화</li>
-                <li>한국어의 높임말과 반말, 자연스러운 문장 연결어 익히기</li>
-                <li>감정 표현, 의견 제시, 일상 사건 서술 문형 확장</li>
+              <ul class="bullet-list intermediate-list">
+                <li>
+                  <strong>대중교통 이용, 병원 진료, 은행 업무 등 실생활 필수 회화</strong>
+                  <span class="en-sub">Practical daily conversations: subway/bus transit, clinics, banks, and post offices</span>
+                </li>
+                <li>
+                  <strong>한국어의 높임말(존댓말)과 반말, 자연스러운 문장 연결어 익히기</strong>
+                  <span class="en-sub">Honorific vs casual speech systems and natural sentence connectors (-는데, -아/어서)</span>
+                </li>
               </ul>
             </div>
 
-            <!-- 학습 방법 -->
+            <!-- [학습 방법] -->
             <div class="content-block">
               <div class="block-heading">
-                <i class="fa-solid fa-masks-theater intermediate-icon"></i>
-                <span>학습 방법</span>
+                <span class="block-heading-title">
+                  <i class="fa-solid fa-masks-theater" style="color: var(--intermediate-color);"></i>
+                  <span>학습 방법</span>
+                </span>
+                <span class="lang-pill">Study Method</span>
               </div>
-              <ul class="bullet-list">
-                <li>실제 상황을 가정한 롤플레이(Role-play) 및 일기 쓰기</li>
-                <li>주 3회 짧은 문장 작문 및 원어민 첨삭 피드백 반영</li>
+              <ul class="bullet-list intermediate-list">
+                <li>
+                  <strong>실제 상황을 가정한 롤플레이(Role-play) 및 일기 쓰기</strong>
+                  <span class="en-sub">Scenario-based role-playing and keeping a daily Korean journal for real-world application</span>
+                </li>
               </ul>
             </div>
 
-            <!-- 교재 및 추천 사이트 -->
+            <!-- [추천 교재 & 사이트] -->
             <div class="info-box-group">
               <div class="info-pill">
-                <div class="info-pill-title"><i class="fa-solid fa-book"></i> 추천 교재</div>
-                <div class="info-pill-content">이화 한국어 2~3권, 경희대 한국어 중급</div>
+                <div class="info-pill-title">
+                  <span><i class="fa-solid fa-book"></i> 추천 교재</span>
+                  <span class="en-inline">Textbooks</span>
+                </div>
+                <div class="info-pill-content">
+                  이화 한국어 2~3권, 경희대 한국어 중급
+                  <span class="en-sub">Ewha Korean 2~3, Kyung Hee Intermediate Korean</span>
+                </div>
               </div>
               <div class="info-pill">
-                <div class="info-pill-title"><i class="fa-solid fa-globe"></i> 추천 사이트</div>
+                <div class="info-pill-title">
+                  <span><i class="fa-solid fa-globe"></i> 추천 사이트</span>
+                  <span class="en-inline">Recommended Web</span>
+                </div>
                 <div class="info-pill-content">
                   <a href="https://korean.go.kr" target="_blank" rel="noopener noreferrer">
-                    국립국어원 한국어리어 <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    국립국어원 한국어리어 (korean.go.kr) <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
+                  <span class="en-sub">National Institute of Korean Language official learning resources</span>
                 </div>
               </div>
             </div>
@@ -1220,58 +1596,87 @@
              ③ 고급 과정 (Advanced)
              ========================================== -->
         <article class="course-card" data-category="advanced">
+          <!-- 도드라진 이미지 영역 -->
           <div class="card-img-wrapper">
             <img 
               src="https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=800&q=80" 
-              alt="경복궁의 고즈넉한 풍경과 한국 전통 문화" 
+              alt="경복궁의 고즈넉한 풍경과 한국 전통 문화 토론 (Gyeongbokgung Palace & Cultural Discussion)" 
               loading="lazy"
               onerror="this.src='https://images.unsplash.com/photo-1546874177-9e664107314e?auto=format&fit=crop&w=800&q=80'"
             />
             <span class="level-badge badge-advanced">
-              <i class="fa-solid fa-landmark"></i> Step 3 · 고급
+              <i class="fa-solid fa-landmark"></i> Step 3 · 고급 (Advanced)
             </span>
+            <div class="img-caption-strip">
+              <span><i class="fa-solid fa-camera"></i> 경복궁 및 한국 전통/현대 문화</span>
+              <span class="lang-pill">심화 토론</span>
+            </div>
           </div>
 
           <div class="card-body">
             <div class="card-header-area">
-              <span class="card-phase">고급 과정 (Advanced)</span>
+              <span class="card-phase-tag">Course Phase 03</span>
               <h3 class="card-title">역사와 문화 토론</h3>
-              <p class="card-subtitle">시사 뉴스, 논리적 담화 및 고유 문화 심화 이해</p>
+              <p class="card-subtitle sub-advanced">
+                History & Cultural Debates <span class="en-inline">· 시사 이슈 & 논리 스피치</span>
+              </p>
             </div>
 
-            <!-- 학습 내용 -->
+            <!-- [학습 내용] -->
             <div class="content-block">
               <div class="block-heading">
-                <i class="fa-solid fa-book-open advanced-icon"></i>
-                <span>학습 내용</span>
+                <span class="block-heading-title">
+                  <i class="fa-solid fa-book-open" style="color: var(--advanced-color);"></i>
+                  <span>학습 내용</span>
+                </span>
+                <span class="lang-pill">What You Learn</span>
               </div>
-              <ul class="bullet-list">
-                <li>한국의 역사 사건, 전통 문화, 현대 사회 이슈에 대한 심도 있는 이해</li>
-                <li>시사 용어 및 비유적 표현을 활용한 논리적 스피치 구사</li>
-                <li>격식체 담화 및 학술적 텍스트의 독해 능력 배양</li>
+              <ul class="bullet-list advanced-list">
+                <li>
+                  <strong>한국의 역사 사건, 전통 문화, 현대 사회 이슈에 대한 심도 있는 이해</strong>
+                  <span class="en-sub">In-depth exploration of Korean historical milestones, folklore, and current social topics</span>
+                </li>
+                <li>
+                  <strong>시사 용어 및 비유적 표현을 활용한 논리적 스피치</strong>
+                  <span class="en-sub">Advanced news vocabulary, idioms, metaphors, and delivering structured arguments</span>
+                </li>
               </ul>
             </div>
 
-            <!-- 학습 방법 -->
+            <!-- [학습 방법] -->
             <div class="content-block">
               <div class="block-heading">
-                <i class="fa-solid fa-newspaper advanced-icon"></i>
-                <span>학습 방법</span>
+                <span class="block-heading-title">
+                  <i class="fa-solid fa-newspaper" style="color: var(--advanced-color);"></i>
+                  <span>학습 방법</span>
+                </span>
+                <span class="lang-pill">Study Method</span>
               </div>
-              <ul class="bullet-list">
-                <li>뉴스 기사 분석, 에세이 작성 및 원어민 토론 세션 참여</li>
-                <li>사설 요약 및 찬반 토론 스크립트 작성 연습</li>
+              <ul class="bullet-list advanced-list">
+                <li>
+                  <strong>뉴스 기사 분석, 에세이 작성 및 원어민 토론 세션 참여</strong>
+                  <span class="en-sub">Analyzing editorial articles, composing argumentative essays, and participating in native discussions</span>
+                </li>
               </ul>
             </div>
 
-            <!-- 교재 및 추천 사이트 -->
+            <!-- [추천 교재 & 사이트] -->
             <div class="info-box-group">
               <div class="info-pill">
-                <div class="info-pill-title"><i class="fa-solid fa-book"></i> 추천 교재</div>
-                <div class="info-pill-content">서강 한국어 고급, 한국어 토론과 토의</div>
+                <div class="info-pill-title">
+                  <span><i class="fa-solid fa-book"></i> 추천 교재</span>
+                  <span class="en-inline">Textbooks</span>
+                </div>
+                <div class="info-pill-content">
+                  서강 한국어 고급, 한국어 토론과 토의
+                  <span class="en-sub">Sogang Advanced Korean, Korean Debate & Discussion</span>
+                </div>
               </div>
               <div class="info-pill">
-                <div class="info-pill-title"><i class="fa-solid fa-globe"></i> 추천 사이트</div>
+                <div class="info-pill-title">
+                  <span><i class="fa-solid fa-globe"></i> 추천 사이트</span>
+                  <span class="en-inline">Recommended Web</span>
+                </div>
                 <div class="info-pill-content">
                   <a href="https://news.naver.com" target="_blank" rel="noopener noreferrer">
                     네이버 뉴스 라이브러리 <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -1280,6 +1685,7 @@
                   <a href="https://www.historyexam.go.kr" target="_blank" rel="noopener noreferrer">
                     한국사 학습 자료 <i class="fa-solid fa-arrow-up-right-from-square"></i>
                   </a>
+                  <span class="en-sub">Naver News archive & Korean History Proficiency Exam materials</span>
                 </div>
               </div>
             </div>
@@ -1289,62 +1695,87 @@
     </div>
   </section>
 
+  <!-- 구분선 -->
+  <div class="container"><div class="section-separator"></div></div>
+
   <!-- ==========================================================================
        3. TOPIK 시험 연계 및 학습 마무리 섹션
        ========================================================================== -->
   <section class="container" id="topik">
-    <div class="topik-section">
+    <div class="topik-container-outer">
       <div class="topik-banner">
-        <!-- 배너 이미지 -->
+        <!-- 합격 축하 이미지 및 도드라진 프레임 -->
         <div class="topik-image-wrap">
           <img 
             src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80" 
-            alt="합격을 축하하는 글로벌 학습자들의 모습" 
+            alt="합격을 축하하는 모습 및 시험 합격 세레모니 (TOPIK Certificate & Celebration)" 
             loading="lazy"
             onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1000&q=80'"
           />
           <div class="topik-img-overlay">
-            <span class="topik-stamp"><i class="fa-solid fa-certificate"></i> OFFICIAL GOAL</span>
-            <h3>TOPIK Ⅰ · Ⅱ 목표 급수 달성</h3>
-            <p style="font-size: 0.88rem; opacity: 0.9; margin-top: 4px;">공인 한국어능력시험으로 학습의 결실을 증명하세요</p>
+            <span class="topik-stamp"><i class="fa-solid fa-award"></i> FINAL MILESTONE</span>
+            <h3 style="font-size: 1.45rem; font-weight: 800; line-height: 1.3;">
+              TOPIK Ⅰ · Ⅱ 공인 급수 취득
+            </h3>
+            <p style="font-size: 0.88rem; opacity: 0.95; margin-top: 4px;">
+              Achieve certified Korean proficiency for university admission and careers
+            </p>
           </div>
         </div>
 
-        <!-- 내용 설명 -->
+        <!-- 내용 설명 영역 -->
         <div class="topik-content">
-          <span class="topik-badge"><i class="fa-solid fa-bullseye"></i> 시험 완벽 가이드</span>
+          <span class="topik-badge">
+            <i class="fa-solid fa-bullseye"></i> 시험 완벽 대비 가이드 · Exam Preparation
+          </span>
+          
           <!-- [타이틀] 요구사항 -->
           <h2 class="topik-title">최종 목표: 한국어능력시험(TOPIK) 완벽 대비</h2>
+          <p class="en-sub" style="font-size: 1rem; color: var(--topik-color); font-weight: 700; margin-top: -6px; margin-bottom: 8px;">
+            Ultimate Goal: Comprehensive TOPIK Exam Mastery
+          </p>
+          
           <p class="topik-desc">
-            학습한 어휘와 회화 지식을 공식 시험 점수로 연결하는 전략적 로드맵입니다. 체계적인 기출 분석과 약점 보완으로 목표 급수를 단기에 합격하세요.
+            학습한 회화와 문법 지식을 시험 점수로 연결하는 전략입니다. 급수별 시험 유형을 공략하고 실전 모의고사로 목표 점수를 획득하세요.
           </p>
 
-          <!-- [내용] 요구사항 (개조식 불릿 포인트) -->
+          <!-- [내용] 요구사항 (개조식 불릿) -->
           <ul class="topik-bullets">
-            <li>중·고급 과정 학습과 TOPIK Ⅰ·Ⅱ 급수별 유형(듣기·읽기·쓰기) 매칭 방법 체득</li>
-            <li>기출문제 풀이와 오답 노트 정리를 통한 실전 시험 감각 극대화</li>
-            <li>쓰기 영역(53번 문항 그래프 분석, 54번 찬반 논술) 맞춤형 작문 템플릿 훈련</li>
+            <li>
+              <strong>중·고급 과정 학습과 TOPIK Ⅰ·Ⅱ 급수별 유형(듣기·읽기·쓰기) 매칭 방법</strong>
+              <span class="en-sub">Connecting intermediate/advanced modules to TOPIK I & II sections (Listening, Reading, Writing)</span>
+            </li>
+            <li>
+              <strong>기출문제 풀이와 오답 노트 정리를 통한 실전 감각 극대화</strong>
+              <span class="en-sub">Past exam paper drills, time management practice, and systematic incorrect-answer analysis</span>
+            </li>
+            <li>
+              <strong>쓰기 영역(TOPIK II 51~54번) 맞춤형 서술식 작문 템플릿 완성</strong>
+              <span class="en-sub">Mastering graph analysis and argumentative writing templates for high-tier TOPIK II scores</span>
+            </li>
           </ul>
 
-          <!-- 급수별 매칭 박스 -->
+          <!-- 급수별 매칭 요약 박스 -->
           <div class="topik-level-cards">
             <div class="level-box">
               <div class="level-box-header">
                 <span class="level-box-title">TOPIK Ⅰ (1~2급)</span>
-                <span class="level-box-tag">초급 연계</span>
+                <span class="level-box-tag">초급 연계 (Beginner)</span>
               </div>
-              <p>듣기(30문항) + 읽기(40문항) 집중 공략. 일상 기초 어휘와 생존 문장 완성.</p>
+              <p>듣기(30문항) + 읽기(40문항) 총 200점. 일상 기초 회화와 생존 표현 평가.</p>
+              <span class="en-sub">Listening (30 Qs) + Reading (40 Qs). Covers basic survival Korean.</span>
             </div>
             <div class="level-box">
               <div class="level-box-header">
                 <span class="level-box-title">TOPIK Ⅱ (3~6급)</span>
-                <span class="level-box-tag">중·고급 연계</span>
+                <span class="level-box-tag">중·고급 연계 (Int/Adv)</span>
               </div>
-              <p>듣기(50문항) + 쓰기(4문항) + 읽기(50문항). 시사 지문 독해와 논술형 쓰기 완성.</p>
+              <p>듣기(50문항) + 쓰기(4문항) + 읽기(50문항) 총 300점. 학술·직무 역량 평가.</p>
+              <span class="en-sub">Listening (50 Qs) + Writing (4 Qs) + Reading (50 Qs) for work & study.</span>
             </div>
           </div>
 
-          <!-- [추천 사이트] 요구사항 -->
+          <!-- [추천 사이트] 링크 버튼 -->
           <div class="topik-links-grid">
             <a href="https://www.topik.go.kr" target="_blank" rel="noopener noreferrer" class="topik-btn topik-btn-primary">
               <i class="fa-solid fa-graduation-cap"></i> TOPIK 공식 홈페이지 (topik.go.kr)
@@ -1358,41 +1789,164 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       로드맵 타임라인 시각화 섹션
-       ========================================================================== -->
-  <section class="container" id="roadmap">
-    <div class="roadmap-timeline">
-      <span class="section-tag">Learning Journey</span>
-      <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 6px;">
-        성공적인 완주를 위한 4단계 마일스톤
-      </h3>
-      <p style="font-size: 0.92rem; color: var(--text-muted);">매일 30분씩 꾸준히 실천하면 1년 안에 한국어로 자유롭게 소통할 수 있습니다.</p>
+  <!-- 구분선 -->
+  <div class="container"><div class="section-separator"></div></div>
 
-      <div class="roadmap-steps">
-        <div class="roadmap-node">
-          <div class="node-icon"><i class="fa-solid fa-spell-check"></i></div>
-          <div class="node-title">1단계: 한글 마스터</div>
-          <div class="node-sub">자모음, 받침, 기본 인사 (1~2개월)</div>
+  <!-- ==========================================================================
+       4. 방문자 질문 및 답변 섹션 (Q&A & FAQ Section)
+       * 요구사항: "방문한 사람들의 질문에 답할 수 있는 부분도 마지막 부분에 넣어줘"
+       ========================================================================== -->
+  <section class="container" id="qa-section">
+    <div class="qa-section-wrapper">
+      <div class="section-header-box" style="margin-bottom: 20px;">
+        <span class="section-pill-tag" style="background: var(--qa-light); color: var(--qa-color); border-color: var(--qa-border);">
+          <i class="fa-solid fa-comments-question-check"></i> Visitor Q&A & Support
+        </span>
+        <h2 class="section-title-large">자주 묻는 질문 & 학습자 Q&A</h2>
+        <p class="section-desc-bilingual">
+          외국인 학습자들이 가장 궁금해하는 질문에 답해 드립니다. 궁금한 점을 직접 남겨보세요!
+          <span class="en-sub">Find answers to common Korean learning dilemmas or post your own question below</span>
+        </p>
+      </div>
+
+      <div class="qa-grid">
+        <!-- 왼쪽: 자주 묻는 질문 아코디언 (FAQ) -->
+        <div class="faq-list">
+          <!-- FAQ 1 -->
+          <div class="faq-item open">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <div>
+                <span class="q-icon">Q1</span>
+                <span>한글을 전혀 몰라도 혼자 독학할 수 있나요?</span>
+                <span class="en-sub">Can I self-study if I have zero knowledge of Hangul?</span>
+              </div>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </div>
+            <div class="faq-answer">
+              네, 가능합니다! 한글(Hangul)은 과학적인 문자 체계로, 2~3일 정도의 자모음 집중 학습으로 글자를 읽을 수 있습니다. 로마자 발음 표기에만 의존하지 마시고, <strong>초급 과정의 자모음 음성 섀도잉</strong>부터 시작하시면 가장 빠릅니다.
+              <span class="en-sub" style="margin-top: 6px; display: block; color: var(--text-light);">
+                Yes! Hangul is phonetic and logical. You can learn to read the alphabet within a couple of days. Avoid relying solely on romanization and start directly with audio shadowing.
+              </span>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <div>
+                <span class="q-icon">Q2</span>
+                <span>초급에서 TOPIK 2급까지 보통 얼마나 걸리나요?</span>
+                <span class="en-sub">How long does it typically take from zero to TOPIK Level 2?</span>
+              </div>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </div>
+            <div class="faq-answer">
+              하루 평균 1~2시간씩 꾸준히 학습할 경우 <strong>약 4~6개월</strong>이면 TOPIK Ⅰ(1~2급) 합격 기준인 140점 이상을 충분히 달성할 수 있습니다. 기출문제 듣기 연습과 필수 1,500 단어 습득이 핵심입니다.
+              <span class="en-sub" style="margin-top: 6px; display: block; color: var(--text-light);">
+                With 1–2 hours of daily study, learners typically achieve TOPIK Level 2 in about 4–6 months by focusing on listening drills and 1,500 essential words.
+              </span>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <div>
+                <span class="q-icon">Q3</span>
+                <span>존댓말(높임말)과 반말은 언제 어떻게 구분해서 써야 하나요?</span>
+                <span class="en-sub">When should I use formal honorifics versus casual speech?</span>
+              </div>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </div>
+            <div class="faq-answer">
+              외국인 학습자에게는 처음 만나는 사람, 나이가 많은 사람, 식당/상점 등 일상 생활에서 <strong>항상 해요체(-아요/어요) 존댓말</strong>을 기본으로 사용하는 것을 권장합니다. 반말은 친해진 동갑 또는 연하의 친구와 합의 후에 쓰는 것이 안전합니다.
+              <span class="en-sub" style="margin-top: 6px; display: block; color: var(--text-light);">
+                As a foreigner, always default to the polite informal ending (-아요/-어요). Only switch to casual speech (반말) after agreeing with close peers of the same age or younger.
+              </span>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <div class="faq-question" onclick="toggleFaq(this)">
+              <div>
+                <span class="q-icon">Q4</span>
+                <span>한국 유학이나 취업을 위해서는 TOPIK 몇 급이 필요한가요?</span>
+                <span class="en-sub">What TOPIK level is required for studying or working in Korea?</span>
+              </div>
+              <i class="fa-solid fa-chevron-down chevron"></i>
+            </div>
+            <div class="faq-answer">
+              한국 대학교 학부 입학은 통상 <strong>TOPIK 3~4급 이상</strong>, 정규 취업이나 대학원 졸업은 <strong>TOPIK 5~6급</strong>을 권장합니다. 고급 과정의 시사 논술 및 서술식 쓰기 대비가 반드시 필요합니다.
+              <span class="en-sub" style="margin-top: 6px; display: block; color: var(--text-light);">
+                Undergraduate university programs usually require TOPIK Level 3–4, while Korean corporate employment and graduate degrees strongly favor Level 5–6.
+              </span>
+            </div>
+          </div>
         </div>
-        <div class="roadmap-node">
-          <div class="node-icon"><i class="fa-solid fa-comments"></i></div>
-          <div class="node-title">2단계: 일상 회화</div>
-          <div class="node-sub">실생활 표현, 롤플레이 (3~5개월)</div>
-        </div>
-        <div class="roadmap-node">
-          <div class="node-icon"><i class="fa-solid fa-book-journal-whills"></i></div>
-          <div class="node-title">3단계: 시사 및 심화</div>
-          <div class="node-sub">뉴스, 문화 이해, 토론 (6~9개월)</div>
-        </div>
-        <div class="roadmap-node node-active">
-          <div class="node-icon"><i class="fa-solid fa-trophy"></i></div>
-          <div class="node-title">4단계: TOPIK 합격</div>
-          <div class="node-sub">모의고사 및 공식 급수 취득 (10~12개월)</div>
+
+        <!-- 오른쪽: 실시간 질문 등록 양식 & 최신 답변 미리보기 -->
+        <div class="qa-form-box">
+          <div class="qa-form-header">
+            <h4>
+              <i class="fa-solid fa-pen-nib"></i> 한국어 학습 질문 남기기
+            </h4>
+            <p>궁금한 점을 남겨주시면 가이드 관리자 및 멘토가 답변해 드립니다.</p>
+            <span class="en-sub">Leave your Korean learning questions here for quick feedback!</span>
+          </div>
+
+          <form id="questionForm" onsubmit="handleQuestionSubmit(event)">
+            <div class="qa-form-group">
+              <label for="learnerName">이름 / 닉네임 <span class="en-inline">(Your Name / Nickname)</span></label>
+              <input type="text" id="learnerName" class="qa-input" placeholder="예: Michael / Sarah / 지민" required />
+            </div>
+
+            <div class="qa-form-group">
+              <label for="learnerLevel">현재 나의 수준 <span class="en-inline">(Current Level)</span></label>
+              <select id="learnerLevel" class="qa-select">
+                <option value="초급 (Beginner)">초급 (Beginner) · 한글 자모음 및 기초</option>
+                <option value="중급 (Intermediate)">중급 (Intermediate) · 일상 회화</option>
+                <option value="고급 (Advanced)">고급 (Advanced) · 시사/문화</option>
+                <option value="TOPIK 준비생">TOPIK 시험 준비생 (Exam Candidate)</option>
+              </select>
+            </div>
+
+            <div class="qa-form-group">
+              <label for="learnerQuestion">질문 내용 <span class="en-inline">(Your Question)</span></label>
+              <textarea id="learnerQuestion" class="qa-textarea" placeholder="어떤 부분이 가장 어렵거나 궁금한가요? (What is your question?)" required></textarea>
+            </div>
+
+            <button type="submit" class="qa-submit-btn">
+              <i class="fa-solid fa-paper-plane"></i> 질문 등록하기 (Submit Question)
+            </button>
+          </form>
+
+          <!-- 최근 등록된 질문 및 답변 피드 -->
+          <div class="qa-recent-feed">
+            <div class="qa-feed-title">
+              <span><i class="fa-solid fa-circle-check" style="color: #10B981;"></i> 최근 답변 완료된 질문 (Recent Q&A)</span>
+            </div>
+            <div id="feedList">
+              <div class="qa-feed-item">
+                <div class="feed-meta">
+                  <strong>Alex (USA) · 초급</strong>
+                  <span>10분 전</span>
+                </div>
+                <div class="feed-q">Q: 'ㄱ, ㄲ, ㅋ' 소리 차이를 구별하기 너무 어려워요!</div>
+                <div class="feed-a">A: 멘토: 휴지를 입술 앞에 대고 바람이 나오는지 확인해 보세요! 'ㅋ'는 바람이 세게 나오고, 'ㄲ'는 성대에 힘을 주는 된소리입니다.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- 토스트 알림창 -->
+  <div id="toastBox" class="toast-box">
+    <i class="fa-solid fa-circle-check" style="color: #10B981; font-size: 1.1rem;"></i>
+    <span id="toastMsg">질문이 성공적으로 등록되었습니다! (Question submitted!)</span>
+  </div>
 
   <!-- ==========================================================================
        Footer
@@ -1403,12 +1957,15 @@
         <div class="footer-brand">
           <h4>한국어 마스터 가이드 (Korean Learning Guide)</h4>
           <p>
-            본 웹사이트는 한국어를 배우는 모든 글로벌 학습자를 위해 고안된 단계별 맞춤형 종합 학습 가이드입니다. 기초 자모음 학습부터 TOPIK 고득점 합격까지 함께합니다.
+            본 홈페이지는 한국어를 공부하는 글로벌 외국인 학습자를 위해 기획된 단계별 교육 가이드입니다. 한글 기초 자모음부터 TOPIK 고득점 합격까지 함께합니다.
           </p>
+          <span class="en-sub" style="margin-top: 6px;">
+            A comprehensive curriculum roadmap for foreign learners of Korean. From foundational pronunciation to official TOPIK certification.
+          </span>
         </div>
         <div class="footer-links">
           <div class="link-col">
-            <h5>추천 학습처</h5>
+            <h5>학습 추천처 <span class="en-inline">(Resources)</span></h5>
             <ul>
               <li><a href="https://talktomeinkorean.com" target="_blank" rel="noopener">Talk To Me In Korean</a></li>
               <li><a href="https://korean.go.kr" target="_blank" rel="noopener">국립국어원 한국어리어</a></li>
@@ -1416,7 +1973,7 @@
             </ul>
           </div>
           <div class="link-col">
-            <h5>시험 주관처</h5>
+            <h5>시험 및 공인기관 <span class="en-inline">(Offices)</span></h5>
             <ul>
               <li><a href="https://www.topik.go.kr" target="_blank" rel="noopener">국립국제교육원 TOPIK 공식</a></li>
               <li><a href="https://www.historyexam.go.kr" target="_blank" rel="noopener">한국사능력검정시험</a></li>
@@ -1429,20 +1986,20 @@
       <div class="footer-bottom">
         <div>© 2026 Korean Learning Guide. All Rights Reserved. Designed for Foreign Learners.</div>
         <div>
-          <span><i class="fa-solid fa-heart" style="color: #FF7E67;"></i> Made for Korean Learners Worldwide</span>
+          <span><i class="fa-solid fa-heart" style="color: #E05D44;"></i> Made for Korean Learners Worldwide</span>
         </div>
       </div>
     </div>
   </footer>
 
   <!-- ==========================================================================
-       JavaScript Logic (Visitor Counter, Filter Tabs)
+       JavaScript Logic
        ========================================================================== -->
   <script>
-    // 1. Visitor Counter Logic (Realistic incremental counter with localStorage)
+    // 1. Visitor Counter with Animation and LocalStorage Persistence
     document.addEventListener("DOMContentLoaded", () => {
       const counterEl = document.getElementById("visitorCount");
-      const STORAGE_KEY = "korean_guide_visitors";
+      const STORAGE_KEY = "korean_guide_visitors_v2";
       const BASE_COUNT = 12485;
 
       let storedCount = localStorage.getItem(STORAGE_KEY);
@@ -1453,16 +2010,15 @@
       }
       localStorage.setItem(STORAGE_KEY, storedCount);
 
-      // Smooth count-up animation
-      const startCount = storedCount - 25;
+      // Smooth count-up
+      const startCount = storedCount - 35;
       const endCount = storedCount;
-      const duration = 1200; // ms
+      const duration = 1200;
       const startTime = performance.now();
 
       function updateCounter(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        // easeOutQuart
         const easeProgress = 1 - Math.pow(1 - progress, 4);
         const currentVal = Math.floor(startCount + (endCount - startCount) * easeProgress);
         
@@ -1480,12 +2036,10 @@
 
     // 2. Curriculum Filter Tabs
     function filterLevel(level, btn) {
-      // Toggle active button
       const buttons = document.querySelectorAll(".filter-btn");
       buttons.forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
 
-      // Filter cards
       const cards = document.querySelectorAll(".course-card");
       cards.forEach(card => {
         if (level === "all" || card.getAttribute("data-category") === level) {
@@ -1497,11 +2051,80 @@
       });
     }
 
-    // Dynamic keyframe for smooth filter animation
+    // 3. FAQ Accordion Toggle
+    function toggleFaq(headerEl) {
+      const item = headerEl.parentElement;
+      const isOpen = item.classList.contains("open");
+      
+      // Optional: Close others
+      const allItems = document.querySelectorAll(".faq-item");
+      allItems.forEach(i => i.classList.remove("open"));
+
+      if (!isOpen) {
+        item.classList.add("open");
+      }
+    }
+
+    // 4. Handle Q&A Question Submit
+    function handleQuestionSubmit(e) {
+      e.preventDefault();
+      const nameInput = document.getElementById("learnerName");
+      const levelSelect = document.getElementById("learnerLevel");
+      const questionInput = document.getElementById("learnerQuestion");
+
+      const name = nameInput.value.trim();
+      const level = levelSelect.value;
+      const question = questionInput.value.trim();
+
+      if (!name || !question) return;
+
+      // Prepend to recent feed
+      const feedList = document.getElementById("feedList");
+      const newFeedItem = document.createElement("div");
+      newFeedItem.className = "qa-feed-item";
+      newFeedItem.innerHTML = `
+        <div class="feed-meta">
+          <strong>${escapeHtml(name)} · ${escapeHtml(level)}</strong>
+          <span>방금 전 (Just now)</span>
+        </div>
+        <div class="feed-q">Q: ${escapeHtml(question)}</div>
+        <div class="feed-a">A: 멘토: 소중한 질문 감사합니다! 답변을 작성하고 있습니다. (Thank you! Our mentor is reviewing your question.)</div>
+      `;
+      feedList.insertBefore(newFeedItem, feedList.firstChild);
+
+      // Reset form
+      questionInput.value = "";
+      nameInput.value = "";
+
+      // Show toast
+      showToast(`감사합니다, ${name}님! 질문이 정상적으로 접수되었습니다.`);
+    }
+
+    function escapeHtml(text) {
+      return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toastBox");
+      const toastMsg = document.getElementById("toastMsg");
+      toastMsg.textContent = message;
+      toast.style.display = "inline-flex";
+
+      setTimeout(() => {
+        toast.style.display = "none";
+      }, 3500);
+    }
+
+    // FadeIn Keyframe
     const styleSheet = document.createElement("style");
     styleSheet.innerText = `
       @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(8px); }
+        from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
       }
     `;
